@@ -1,0 +1,66 @@
+# OASIS_START
+# DO NOT EDIT (digest: f6462eb6691614c7798d872aa6e0e883)
+# Ignore VCS directories, you can use the same kind of rule outside
+# OASIS_START/STOP if you want to exclude directories that contains
+# useless stuff for the build process
+true: annot, bin_annot
+<**/.svn>: -traverse
+<**/.svn>: not_hygienic
+".bzr": -traverse
+".bzr": not_hygienic
+".hg": -traverse
+".hg": not_hygienic
+".git": -traverse
+".git": not_hygienic
+"_darcs": -traverse
+"_darcs": not_hygienic
+# Executable roaring_bindgen
+"lib_gen/roaring_bindgen.byte": pkg_ctypes
+"lib_gen/roaring_bindgen.byte": pkg_ctypes.stubs
+<lib_gen/*.ml{,i,y}>: pkg_ctypes
+<lib_gen/*.ml{,i,y}>: pkg_ctypes.stubs
+# Library roaring
+"lib/roaring.cmxs": use_roaring
+<lib/*.ml{,i,y}>: oasis_library_roaring_ccopt
+"lib/roaring_stubs.c": oasis_library_roaring_ccopt
+"lib/CRoaring/src/containers/bitset.c": oasis_library_roaring_ccopt
+<lib/roaring.{cma,cmxa}>: use_libroaring_stubs
+<lib/*.ml{,i,y}>: pkg_bytes
+<lib/*.ml{,i,y}>: pkg_ctypes
+<lib/*.ml{,i,y}>: pkg_ctypes.stubs
+<lib/*.ml{,i,y}>: pkg_threads
+"lib/roaring_stubs.c": pkg_bytes
+"lib/roaring_stubs.c": pkg_ctypes
+"lib/roaring_stubs.c": pkg_ctypes.stubs
+"lib/roaring_stubs.c": pkg_threads
+"lib/CRoaring/src/containers/bitset.c": pkg_bytes
+"lib/CRoaring/src/containers/bitset.c": pkg_ctypes
+"lib/CRoaring/src/containers/bitset.c": pkg_ctypes.stubs
+"lib/CRoaring/src/containers/bitset.c": pkg_threads
+# Executable simple
+"examples/simple.native": pkg_bytes
+"examples/simple.native": pkg_ctypes
+"examples/simple.native": pkg_ctypes.stubs
+"examples/simple.native": pkg_threads
+"examples/simple.native": use_roaring
+<examples/*.ml{,i,y}>: pkg_bytes
+<examples/*.ml{,i,y}>: pkg_ctypes
+<examples/*.ml{,i,y}>: pkg_ctypes.stubs
+<examples/*.ml{,i,y}>: pkg_threads
+<examples/*.ml{,i,y}>: use_roaring
+# Executable bench_roaring
+"lib_test/bench_roaring.native": pkg_bytes
+"lib_test/bench_roaring.native": pkg_core
+"lib_test/bench_roaring.native": pkg_core_bench
+"lib_test/bench_roaring.native": pkg_ctypes
+"lib_test/bench_roaring.native": pkg_ctypes.stubs
+"lib_test/bench_roaring.native": pkg_threads
+"lib_test/bench_roaring.native": use_roaring
+<lib_test/*.ml{,i,y}>: pkg_bytes
+<lib_test/*.ml{,i,y}>: pkg_core
+<lib_test/*.ml{,i,y}>: pkg_core_bench
+<lib_test/*.ml{,i,y}>: pkg_ctypes
+<lib_test/*.ml{,i,y}>: pkg_ctypes.stubs
+<lib_test/*.ml{,i,y}>: pkg_threads
+<lib_test/*.ml{,i,y}>: use_roaring
+# OASIS_STOP

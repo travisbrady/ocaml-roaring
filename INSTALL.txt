@@ -1,5 +1,5 @@
 (* OASIS_START *)
-(* DO NOT EDIT (digest: 1a81035d0e59fc69df62e70892022256) *)
+(* DO NOT EDIT (digest: b3d061b76f1feeb32b2a424c9452af5d) *)
 
 This is the INSTALL file for the ocaml-roaring distribution.
 
@@ -13,8 +13,10 @@ In order to compile this package, you will need:
 
 * ocaml
 * findlib
-* ctypes
+* ctypes for library roaring, executable roaring_bindgen
 * bytes for library roaring
+* core for executable bench_roaring
+* core_bench for executable bench_roaring
 
 Installing
 ==========

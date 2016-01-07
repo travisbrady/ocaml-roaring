@@ -1,0 +1,12 @@
+# OASIS_START
+# DO NOT EDIT (digest: 640d850086e0f6ac0438256ab3128d8c)
+version = "0.1"
+description = "OCaml bindings to the CRoaring C library"
+requires = "bytes ctypes ctypes.stubs threads"
+archive(byte) = "roaring.cma"
+archive(byte, plugin) = "roaring.cma"
+archive(native) = "roaring.cmxa"
+archive(native, plugin) = "roaring.cmxs"
+exists_if = "roaring.cma"
+# OASIS_STOP
+
