@@ -1,0 +1,49 @@
+OASISFormat:        0.4
+Name:               ocaml-roaring
+Version:            0.1
+Synopsis:           OCaml bindings to the CRoaring C library
+Authors:            Travis Brady
+License:            Apache-2.0
+LicenseFile:        LICENSE.txt
+BuildTools:         ocamlbuild
+Plugins:            META (0.4), DevFiles (0.4), StdFiles (0.4)
+XStdFilesAUTHORS:   false
+XStdFilesREADME:    false
+
+Library roaring
+  Path:                 lib
+  FindlibName:          roaring
+  BuildTools:           ocamlbuild
+  InternalModules:      Roaring_bindings, Roaring_generated
+  BuildDepends:         bytes, ctypes, ctypes.stubs
+  CompiledObject:       best
+  CSources:             roaring_stubs.c, CRoaring/include/containers/bitset.h, CRoaring/src/containers/bitset.c
+  CCOpt:                -I$pkg_ctypes/.. -I $pkg_ctypes_stubs -I lib/CRoaring/include/containers -std=c99 -O3 -mavx2
+  Modules:              Roaring
+  BuildTools:           roaring_bindgen
+
+Executable "roaring_bindgen"
+  Install:              false
+  Path:                 lib_gen
+  MainIs:               roaring_bindgen.ml
+  BuildDepends:         ctypes.stubs
+
+#Executable simple
+#  Path:                 examples
+#  BuildTools:           ocamlbuild
+#  BuildDepends:         roaring
+#  CompiledObject:       native
+#  MainIs:               simple.ml
+#  Install:              false
+
+#Flag bench
+#  Default:              false
+#  Description:          Bench
+#
+#Executable bench_obitarray
+#  Path:                 lib_test
+#  BuildTools:           ocamlbuild
+#  BuildDepends:         bitarray, core, core_bench
+#  CompiledObject:       native
+#  MainIs:               bench_obitarray.ml
+#  Install:              false
