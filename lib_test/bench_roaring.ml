@@ -9,6 +9,8 @@ let main () =
             (fun () -> let _ = Roaring.create () in ());
         Bench.Test.create ~name:"set"
             (fun () -> let _ = Roaring.set bs 16 in ());
+        Bench.Test.create ~name:"unset"
+            (fun () -> let _ = Roaring.unset bs 16 in ());
         Bench.Test.create ~name:"cardinality"
             (fun () -> let _ = Roaring.cardinality bs in ());
         ]

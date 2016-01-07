@@ -14,6 +14,33 @@ struct
     let bitset_container_set = F.foreign "bitset_container_set" (ptr bitset_container_s @-> uint16_t @-> returning void)
     let bitset_container_unset = F.foreign "bitset_container_unset" (ptr bitset_container_s @-> uint16_t @-> returning void)
     let bitset_container_get = F.foreign "bitset_container_get" (ptr bitset_container_s @-> uint16_t @-> returning bool)
+
+    let bitset_container_or = F.foreign "bitset_container_or" (
+        ptr bitset_container_s @->
+        ptr bitset_container_s @->
+        ptr bitset_container_s @->
+        returning int)
+
+    let bitset_container_or_nocard = F.foreign "bitset_container_or_nocard" (
+        ptr bitset_container_s @->
+        ptr bitset_container_s @->
+        ptr bitset_container_s @->
+        returning int)
+
+    let bitset_container_compute_cardinality = F.foreign "bitset_container_compute_cardinality" (ptr bitset_container_s @-> returning int)
+
+    let bitset_container_and = F.foreign "bitset_container_and" (
+        ptr bitset_container_s @->
+        ptr bitset_container_s @->
+        ptr bitset_container_s @->
+        returning int)
+
+    let bitset_container_and_nocard = F.foreign "bitset_container_and_nocard" (
+        ptr bitset_container_s @->
+        ptr bitset_container_s @->
+        ptr bitset_container_s @->
+        returning int)
+
     let bitset_container_cardinality = F.foreign "bitset_container_cardinality" (ptr bitset_container_s @-> returning int)
 
 end
