@@ -6,7 +6,7 @@ let main () =
 
     Command.run (Bench.make_command [
         Bench.Test.create ~name:"create"
-            (fun () -> let _ = Roaring.create () in ());
+            (fun () -> let b = Roaring.create () in Roaring.free b);
         Bench.Test.create ~name:"set"
             (fun () -> let _ = Roaring.set bs 16 in ());
         Bench.Test.create ~name:"unset"
@@ -14,6 +14,7 @@ let main () =
         Bench.Test.create ~name:"cardinality"
             (fun () -> let _ = Roaring.cardinality bs in ());
         ]
-    )
+    );
+    Roaring.free bs
 
 let () = main()
